@@ -36,4 +36,17 @@ function initMapEdit() {
     map: map,
     draggable: true
   });
+
+  // refresh marker position and recenter map on marker
+  function refreshMarker() {
+    var lat = document.getElementById('place_latitude').value;
+    var lng = document.getElementById('place_longitude').value;
+    var myCoords = new google.maps.LatLng(lat, lng);
+    marker.setPosition(myCoords);
+    map.setCenter(marker.getPosition());
+  }
+
+  // when input values change call refreshMarker
+  document.getElementById('place_latitude').onchange = refreshMarker;
+  document.getElementById('place_longitude').onchange = refreshMarker;
 }
