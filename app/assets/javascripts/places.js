@@ -21,6 +21,14 @@ function initMapEdit() {
   var lat = document.getElementById('place_latitude').value;
   var lng = document.getElementById('place_longitude').value;
 
+  // if not defined create default position
+  if (!lat || !lng){
+    lat = 48.464696;
+    lng = 35.047221;
+    document.getElementById('place_latitude').value = lat;
+    document.getElementById('place_longitude').value = lng;
+  }
+
   var myCoords = new google.maps.LatLng(lat, lng);
 
   var mapOptions = {
